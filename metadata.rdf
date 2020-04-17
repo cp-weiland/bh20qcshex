@@ -1,0 +1,42 @@
+@prefix MainSchema: <http://biohackathon.org/bh20-seq-schema#MainSchema/> .
+@prefix edam: <http://edamontology.org/> .
+@prefix efo: <http://www.ebi.ac.uk/efo/> .
+@prefix evs: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sch: <https://schema.org/> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///peters_repo/bh20-seq-resource/example/placeholder> MainSchema:host [ obo:NCIT_C25688 "string" ;
+            obo:NCIT_C42574 obo:UO_0000036 ;
+            obo:PATO_0000011 20 ;
+            obo:PATO_0000047 obo:NCIT_C27993 ;
+            sio:SIO_000115 "XX1" ;
+            sio:SIO_001167 "string" ;
+            efo:EFO_0000532 obo:NCBITaxon_9606 ;
+            efo:EFO_0000727 "string" ] ;
+    MainSchema:sample [ evs:C25164 "2020-01" ;
+            obo:GAZ_00000448 obo:GAZ_00002459 ;
+            obo:OBI_0001472 "XXX" ;
+            obo:OBI_0001479 "XXX" ;
+            obo:OBI_0001895 "XXX" ;
+            sio:SIO_000115 "XXX" ;
+            sio:SIO_001167 "XXX" ] ;
+    MainSchema:submitter [ obo:NCIT_C37900 "string" ;
+            obo:NCIT_C37984 "testLab" ;
+            obo:NCIT_C42781 "testAuthor" ;
+            obo:OBI_0600047 "labAdd" ;
+            sio:SIO_000115 "https://orcid.org/0000-0002-1825-0097" ;
+            sio:SIO_000116 "tester" ;
+            sio:SIO_000172 "testerAdd" ;
+            efo:EFO_0001741 "string" ] ;
+    MainSchema:technology [ obo:FLU_0000848 70 ;
+            obo:OBI_0600047 "XX" ;
+            efo:EFO_0002699 "XX" ] ;
+    MainSchema:virus [ edam:data_1875 obo:NCBITaxon_2697049 ;
+            sio:SIO_010055 "XX" ] .
+
+
