@@ -1,6 +1,6 @@
-# bh20qcshex
+### bh20qcshex
 
-### contains templates to add rdf validation based on shex to the [PublicSequenceResource](ttps://github.com/virtual-biohackathons/covid-19-bh20/wiki/PublicSequenceResource) developed during the [COVID-19 Biohackathon](COVID-19 Biohackathon). 
+###### contains templates to add rdf validation based on shex to the [PublicSequenceResource](https://github.com/virtual-biohackathons/covid-19-bh20/wiki/PublicSequenceResource) developed during the [COVID-19 Biohackathon](https://github.com/virtual-biohackathons/covid-19-bh20). 
 
 * validation_shape.rdf - the shex shape to validate submissions
 * metadata.rdf - an example submission in rdf
