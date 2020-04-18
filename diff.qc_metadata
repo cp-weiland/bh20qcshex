@@ -1,0 +1,28 @@
+--- qc_metadata.py	2020-04-17 21:05:53.979670868 +0200
++++ qc_metadata_rdf.py	2020-04-17 22:45:43.085515445 +0200
+@@ -5,6 +5,8 @@
+ import logging
+ import traceback
+ 
++import schema_salad.jsonld_context
++
+ def qc_metadata(metadatafile):
+     schema_resource = pkg_resources.resource_stream(__name__, "bh20seq-schema.yml")
+     cache = {"https://raw.githubusercontent.com/arvados/bh20-seq-resource/master/bh20sequploader/bh20seq-schema.yml": schema_resource.read().decode("utf-8")}
+@@ -19,8 +21,16 @@
+ 
+     try:
+         doc, metadata = schema_salad.schema.load_and_validate(document_loader, avsc_names, metadatafile, True)
++        g = schema_salad.jsonld_context.makerdf("workflow", doc, document_loader.ctx)
++        with open("metadata.rdf",'w') as mrdf:
++            mrdf.write(g.serialize(format="turtle").decode("utf-8"))
++            mrdf.close()
+         return True
+     except Exception as e:
+         traceback.print_exc()
+         logging.warn(e)
+     return False
++
++if __name__ == '__main__':
++
++    qc_metadata("../example/metadata.yaml")
