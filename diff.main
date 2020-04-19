@@ -1,0 +1,34 @@
+--- /home/cweiland/programming/virt_bh_2020/peters_repo_02/bh20-seq-resource/bh20sequploader/main.py	2020-04-17 21:03:20.551784178 +0200
++++ main.py	2020-04-19 22:06:13.218122445 +0200
+@@ -10,9 +10,12 @@
+ import getpass
+ import sys
+ sys.path.insert(0,'.')
+-from bh20sequploader.qc_metadata import qc_metadata
++#from bh20sequploader.qc_metadata import qc_metadata
+ from bh20sequploader.qc_fasta import qc_fasta
+ 
++from qc_metadata_rdf import qc_metadata_rdf
++from qc_shex import qc_shex
++
+ ARVADOS_API_HOST='lugli.arvadosapi.com'
+ ARVADOS_API_TOKEN='2fbebpmbo3rw3x05ueu2i6nx70zhrsb1p22ycu3ry34m4x4462'
+ UPLOAD_PROJECT='lugli-j7d0g-n5clictpuvwk8aa'
+@@ -27,10 +30,16 @@
+ 
+     target = qc_fasta(args.sequence)
+ 
+-    if not qc_metadata(args.metadata.name):
++    (metaQC, rdf) = qc_metadata_rdf(args.metadata.name) 
++
++    if not metaQC:
+         print("Failed metadata qc")
+         exit(1)
+ 
++    if not qc_shex(rdf):
++        print("Failed shex qc")
++        exit(1)
++        
+     col = arvados.collection.Collection(api_client=api)
+ 
+     with col.open(target, "w") as f:
